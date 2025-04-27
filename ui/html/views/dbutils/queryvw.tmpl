@@ -1,0 +1,35 @@
+{{define "queryvw"}}
+{{with.Tmplt.queryvw}}
+
+<div class="queryvw">
+    <form         
+        hx-swap="innerHTML swap:.1s"
+        hx-target=".appstage"
+        hx-trigger="submit"
+        hx-vals='js:{
+        "src": event.target.dataset.srcId,
+        "view": "queryvw",
+        "data": "",}'>
+        <textarea name="querytext" id="qt" class="queryvw__textarea" style="text-align: left;">{{.TextAreaStr}}</textarea>
+        <div class="queryvw_btn__cntr">
+            <button class="queryvw__btn" 
+                data-src-id="btn-execute"
+                hx-post="/event/element/click"
+            >Execute</button>
+
+            <button class=""
+                data-src-id="btn-save"
+                hx-post="/event/element/click"
+                hx-swap="innerHTML swap:.1s"
+                hx-target=".main-area"
+                hx-trigger="click"
+                hx-vals='js:{
+                "src": event.target.dataset.srcId,
+                "view": "queryvw",
+                "data": "",}'>Add Query to Database</button>
+        </div>
+    </form>
+</div>
+{{end}}
+{{end}}
+

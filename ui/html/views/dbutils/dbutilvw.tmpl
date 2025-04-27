@@ -1,0 +1,20 @@
+{{ define "dbutilvw" }}
+
+<div class="dbutilvw">
+    <div class="dbutilvw-sidenav__cntr">
+        {{ template "dbsidenavvw" . }}
+    </div>
+    <div id="dbmain" class="dbutilvw-body__cntr">
+        {{ if .Tmplt.dbutilvw.QueryVw }}
+            {{ template "queryvw" . }}
+        {{ end }}
+
+        {{ if .Tmplt.dbutilvw.AuditVw }}
+            {{ template "auditvw" . }}
+        {{ end }}
+        
+        {{ template "tablevw" . }}
+    </div>
+</div>
+
+{{end}}

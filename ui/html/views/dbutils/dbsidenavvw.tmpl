@@ -1,0 +1,119 @@
+{{define "dbsidenavvw"}}
+
+{{ with.Tmplt.dbsidenavvw}}
+<aside class="dbsidenavvw slide-in" x-data="dbsidenavvw">    
+    <div class="dbsidenavvw__content"        
+        hx-swap="innerHTML swap:.1s "
+        hx-target=".dbutilvw-body__cntr"
+        hx-indicator=".htmx-indicator"
+        hx-trigger="click"
+        hx-vals='js:{
+            "src": event.target.dataset.srcId,
+            "view": "dbsidenavvw",
+            "data": "",
+        }'>
+        <div class="menu-div" @Click="onMenuClick(event)">
+            <p>Database Utility Menu</p>
+            <i id="dbsidenav-chevron-icon" class="fa-solid fa-chevron-right"></i>
+        </div>
+        
+        <div class="hover_el db-source" data-src-id="dbsource" 
+            hx-post="/event/element/click" 
+            hx-vals='js:{
+                "src": event.currentTarget.dataset.srcId,
+                "view": "dbsidenavvw",
+                "data": "",
+            }'>
+            <i id="db-source-icon" class="fa-solid fa-database"></i>
+            <a href="#">Database Source</a>
+        </div>
+       
+        <div class="border_bottom-1x"></div>
+        
+        {{range .Data}}
+        
+        <div class="hover_el" @click="onCatClick(event)" >
+            <i class={{.Icon}}></i>
+            <a href="#">{{.Category}}</a>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+        <div class="hover_el panelx" data-src-id="div-sql-select" >
+            <ul id="tbl-items" class="" @Click="onItemClick(event)">
+                {{range .ElId}}
+                <li data-src-id="{{.Name}}" hx-post="/event/element/click" ><i class="fa-solid fa-table"></i>{{.Label}}</li>
+                {{end}}
+            </ul>
+        </div>
+        
+        {{end}}
+        <div class="border_bottom-1x"></div>
+        <div class="hover_el" data-src-id="ffquery" 
+            @Click="onItemClick(event)"
+            hx-post="/event/element/click" 
+            hx-vals='js:{
+                "src": event.currentTarget.dataset.srcId,
+                "view": "dbsidenavvw",
+                "data": "",
+            }'>
+            <i class="fa-solid fa-database"></i>
+            <a href="#">Free Form Query</a>
+        </div> 
+        <div class="hover_el" data-src-id="query-cat" 
+            @Click="onItemClick(event)"
+            hx-post="/event/element/click" 
+            hx-vals='js:{
+                "src": event.currentTarget.dataset.srcId,
+                "view": "dbsidenavvw",
+                "data": "",
+            }'>
+            <i class="fa-solid fa-database"></i>
+            <a href="#">Query Catalog</a>
+        </div> 
+        <div class="hover_el" data-src-id="audit" 
+            @Click="onCatClick(event)"
+            hx-vals='js:{
+                "src": event.currentTarget.dataset.srcId,
+                "view": "dbsidenavvw",
+                "data": "",
+            }'>
+            <i class="fa-solid fa-database"></i>
+            <a href="#">Audit</a>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div> 
+        <div class="hover_el panelx" data-src-id="div-sql-select" @Click="onItemClick(event)" >
+            <ul id="tbl-items2" class="">              
+                <li data-src-id="audit_config" hx-post="/event/element/click" ><i class="fa-solid fa-table"></i>Configure</li>
+                <li data-src-id="audit_create" hx-post="/event/element/click" ><i class="fa-solid fa-table"></i>Create</li>
+                <li data-src-id="audit_execute" hx-post="/event/element/click" ><i class="fa-solid fa-table"></i>Execute</li>              
+            </ul>
+        </div>
+
+        <div class="hover_el" data-src-id="tools" 
+            @Click="onItemClick(event)"
+            hx-post="/event/element/click" 
+            hx-vals='js:{
+                "src": event.currentTarget.dataset.srcId,
+                "view": "dbsidenavvw",
+                "data": "",
+            }'>
+            <i class="fa-solid fa-wrench"></i>
+            <a href="#">Tools</a>
+        </div>    
+        <div class="hover_el" data-src-id="tools" 
+            @Click="onItemClick(event)"
+            hx-post="/event/element/click" 
+            hx-vals='js:{
+                "src": event.currentTarget.dataset.srcId,
+                "view": "dbsidenavvw",
+                "data": "",
+            }'>
+            <i class="fa-solid fa-gear"></i>
+            <a href="#">Settings</a>
+        </div>          
+    </div>       
+</aside>
+
+
+{{end}}
+{{end}}

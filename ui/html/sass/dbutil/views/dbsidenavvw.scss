@@ -1,0 +1,182 @@
+.dbsidenavvw {
+    position: fixed;
+    top: 6rem;
+    left: 0;
+    width: 35rem;
+    height: 100%;
+    //background-color: #2b4147;
+    background-color: var(--light-color);
+    //background-color: #4b2e90;
+    //background-image: url('/html/images/iStock-1616131883.jpg');
+
+    z-index: 1000;
+    transition: all 0.4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    //transform: translateX(-100%);
+    background-blend-mode: lighten;
+
+    & .menu-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 40rem;
+        //height: 5rem;
+        //color: #fafafa;
+        //background-color: #3e545a;
+        color: var(--dark-color);
+        //background-color: var(--tertiary-color);
+        background-color: #f10094;
+        border-radius: 0 12px 12px 0;
+        font-size: 1.8;
+
+        & > p {
+            margin-left: 5rem;
+            //border-bottom: 1px solid #fafafa;
+            padding: 1rem;
+        }
+    }
+
+    & .db-source {
+        margin-top: 1rem;
+
+        & i {
+            color: red;
+        }
+    }
+
+    &:first-child {
+        
+        & h2 {
+            color: #fafafa;
+            //margin: 0 0 1rem 0rem;
+            width: 100%;
+            padding: 1rem;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+        border-bottom: 1px solid #fafafa;
+        //margin-bottom: 1rem;
+    }
+
+    &__content {
+        width: 100%;;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        font-size: 1.5rem;
+        font-weight: 200;
+        //background-image: url("/html/images/images.jpg");
+
+        & .static-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+        }
+
+        & .hover_el:hover {       
+            transition: .3s;
+            //background-color: #8f9094;
+            background-color: #c0c0c9;
+
+            border-radius: 6px;
+            //opacity: 0.8;      
+            width: 100%;      
+        }
+
+        & div {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            //border-radius: 12px;
+            //padding: 0 0 0 1rem;
+            //border: 1px solid #e2e7e9;                        
+        }
+
+        & a {
+            //color: #fafafa;
+            color: var(--dark-color);
+            text-decoration: none;
+            padding: .9rem 0;
+            transition: color 0.3s;
+            margin-right: 1rem;
+            width: 100%;
+            
+        }
+
+        & i {
+            //padding: 1rem 0;
+            width: 3rem;
+            margin: 0 .5rem 0 1rem;
+            //color: #fafafa;
+            color: var(--dark-color);
+            transform-origin: 40% 50%;
+        }
+
+        & ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            font-size: 1.2rem;
+            //color: #fff;
+            color: var(--dark-color);
+            //background-color: #2f555f;
+            background-color: var(--tertiery-color);
+
+            & li {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                //border-radius: 12px;
+                padding: .6rem 0 .6rem 1rem;
+                border-bottom: 1px solid #353638;
+
+                &:hover {
+                    transition: .3s;
+                    background-color: #9a9b9e;
+                    border-radius: 12px;
+                    //opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
+.panelx {
+    padding: 0 18px;
+    display: none;
+    height: 0;
+    overflow: hidden;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    transition: height 0.4s ease-in-out;
+}
+
+.show-it {
+    display: block;
+    height: 100%;
+}
+
+.rotate-fwd {
+    transform: rotate(90deg);
+}
+
+.rotate-bck {
+    transform: rotate(0deg);
+}
+
+.slide-out {
+    transform: translateX(0);
+}
+.slide-in {
+    transform: translateX(-100%);
+}

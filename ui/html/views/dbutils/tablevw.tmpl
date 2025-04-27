@@ -1,0 +1,142 @@
+{{ define "tablevw" }}
+{{with.Tmplt.tablevw.Data}}
+{{$htmx := .Htmx}}
+{{$search_str := .SearchInput}}
+<div class="tablevw" x-data="tablevw" x-init="onInit()" >
+    <div class="tablevw_hdr" >
+        <div class="tablevw_hdr__pager" @click.outside="onOutsideClick(event)" >
+            <div class="show_items">
+                <label for="itens">
+                    <span>Show</span>
+                    <select name="table_items" data-src-id="pgsize"
+                        hx-post="/event/element/change"
+                        hx-swap="innerHTML swap:.1s"
+                        hx-target=".dbutilvw-body__cntr"
+                        hx-vals='js:{
+                        "src": event.target.dataset.srcId,
+                        "view": "tablevw",
+                        "data": "",}'>         
+                        {{range .OptionValues}}     
+                        {{if .OptionSelected}} 
+                        <option  value="{{.OptionValue}}" selected>{{.OptionValue}}</option>
+                        {{else}}                                
+                        <option  value="{{.OptionValue}}" >{{.OptionValue}}</option>                    
+                        {{end}}
+                        {{end}}
+                    </select>
+                
+                </label>
+            </div>
+            <div class="page_cntrl">
+
+                    <div class="page_cntrl_btns" 
+                        data-src-id="page"                       
+                        hx-disinherit="hx-confirm hx-target"
+                        hx-swap="innerHTML swap:.1s"                   
+                        hx-trigger="click"                                      
+                        hx-vals='js:{                        
+                        "src": event.target.dataset.srcId,
+                        "view": "tablevw",
+                        "data": "",}'>
+                        
+                        {{range .PageBtns}}
+                            {{if .Disabled}}
+                                {{if .Htmx}}
+                                    <p style="width: 15rem;" class="nav-info" name="{{.Name}}" data-src-id="{{.SrcId}}">{{.Label}}</p>
+                                {{else}}
+                                    <button class="{{.Class}}" name="{{.Name}}" data-src-id="{{.SrcId}}" disabled >{{.Label}}</button>
+                                {{end}}
+                            {{else}}
+                                {{if .Htmx}}
+                                    <p style="width: 15rem;" class="nav-info" name="{{.Name}}" data-src-id="{{.SrcId}}">{{.Label}}</p>
+                                {{else}}
+                                    <button class="{{.Class}}" name="{{.Name}}" data-src-id="{{.SrcId}}" hx-post="/event/element/click" hx-target=".dbutilvw-body__cntr" >{{.Label}}</button>
+                                {{end}}
+                            {{end}}
+                        {{end}} 
+                    </div> 
+
+                
+                <div id="pager_thingy" >
+                  
+                </div>
+            </div>
+        </div>
+        <div class="search_items">
+            <label for="search">
+                <span>Search</span> 
+            </label>            
+
+            <input
+                id="search"
+                class="search_items__input"
+                type="search"
+                name="search"
+                data-src-id="table-search"
+                value="{{$search_str}}"
+                placeholder=" Begin Typing To Search Table..."
+                hx-post="/event/element/search"
+                hx-trigger="input changed delay:500ms, search"
+                hx-target=".dbutilvw-body__cntr"
+                hx-swap="innerHTML swap:.1s"
+                hx-indicator=".htmx-indicator"
+                hx-vals='js:{
+                    "src": "table-search",
+                    "view": "tablevw",
+                    "data": "",
+                }'
+            />
+
+        </div> 
+    </div>
+    <div class="tablevw_body">
+        <table class="tftable" border="1" >
+            <caption>{{.Name}}</caption>
+            <thead>
+                <tr                    
+                    hx-swap="innerHTML swap:.1s"
+                    hx-target=".activity_area"
+                    hx-indicator=".htmx-indicator"
+                    hx-vals='js:{
+                    "src": event.target.dataset.srcId,
+                    "view": "tablevw",
+                    "data": "",}'
+                >
+                    {{range .Columns}}
+                    <th>{{.}}
+                        <img hx-post="/event/element/click" src="/html/images/updown_gray.png" data-src-id="sorter" alt="Icon" width="25" height="25">                        
+                    </th>
+                    {{end}}
+                </tr>
+            </thead>
+            <tbody>
+                {{range .RowsSlice}}
+                <tr 
+                    hx-swap="innerHTML swap:.1s"
+                    hx-target=".dbutilvw-body__cntr"
+                    hx-indicator=".htmx-indicator"
+                    hx-vals='js:{
+                    "src": event.target.dataset.srcId,                   
+                    "view": "tablevw",
+                    "data": { 
+                        sql: event.target.innerText,
+                        name: event.target.previousElementSibling.innerText, 
+                    },
+                }'>
+                    {{range .Data}}
+                    <td hx-post="/event/element/click" data-src-id="data-cell">{{.}}</td>
+                    {{end}}               
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    {{if .Detail}}
+    <div class="tablevw_footer">  
+        <div class="sqlinfo">{{.SqlQuery}}</div>   
+    </div>
+    {{end}}
+</div>
+{{end}}
+{{end}}
+

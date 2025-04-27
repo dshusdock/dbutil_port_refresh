@@ -1,0 +1,63 @@
+{{define "createauditvw"}}
+{{with.Tmplt.createauditvw}}
+<div class="" x-data="createauditvw">
+  
+    <div id="create_auditvw" class="create-auditvw" >
+        <div class="create-auditvw__hdr">
+            <div class="left"></div>
+            <div class="center">Audit Entry Form</div>
+            <div class="right"> <i class="fa-solid fa-rectangle-xmark fa-2xl" @click="onCloseClick($event)"></i> </div>
+        </div>
+        <div class="create-auditvw__body">
+            <div class="auditvw__form">
+                <form 
+                    hx-swap="none"
+                    hx-target=".main-div"
+                    hx-trigger="submit"
+                    hx-vals='js:{
+                    "type": "btn",
+                    "label": event.target.innerText,
+                    "view_id": "auditvw",
+                    "view_str": "create",}'
+                >
+                    <div class="auditvw__form-input">
+                        <div class="custom-select _stack">
+                            <label for="type">Type:</label>
+                            <select id="au_type" name="type">                               
+                                <option>Audit</option>                               
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
+                        <div class="custom-select _stack" >
+                            <label for="category">Category:</label>
+                            <select id="au_category" name="category">
+                                <option>Issue</option>
+                                <option>Issue Detail</option>
+                                <option>Other</option>
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
+                        <div class="_stack">
+                            <label for="subcategory">Sub-Category:</label>
+                            <input type="text" id="au_subcategory" name="subcategory" required>
+                        </div>
+                    </div>
+                    <div  class="_stack">
+                        <label for="issue_name">Name:</label>
+                        <input style="width: 62rem;" type="text" id="au_issue_name" name="issue_name" required>
+                    </div>
+                    <div class="_stack">
+                        <label for="issue_query">SQL Query</label>
+                        <textarea name="issue_query" id="au_issue_query"></textarea>
+                    </div>
+            
+                    <div class="auditvw__form-btn">
+                        <button hx-post="/event/element/click" @click="onCloseClick($event)">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}
+{{end}}

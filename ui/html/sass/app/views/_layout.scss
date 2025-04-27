@@ -1,0 +1,40 @@
+.container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 6rem 93rem 1fr;
+  gap: 5px 5px;
+  grid-auto-flow: column;
+  grid-template-areas:
+    "_header"
+    "_main"
+    "_footer";
+  & div {
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-content: center;
+    // border: 1px solid black;
+  }
+}
+
+.header-area {
+  grid-area: _header;
+  display: flex;
+  justify-content: center;
+}
+
+.main-area {
+  grid-area: _main;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  height: 95%;
+}
+
+.footer {
+  grid-area: _footer;
+}
+
+.activity {
+  width: 100%;
+}

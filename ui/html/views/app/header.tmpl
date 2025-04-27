@@ -1,0 +1,40 @@
+{{define "header"}}
+
+<div class="header" x-data="header">
+    <header>        
+        <div class="">
+            <i class="fa-sharp fa-solid fa-bars fa-3x" @click="openAppSidePanel()"></i>
+            <span>Unigy Triage Utility</span>
+        </div>
+        <div class="hc1">
+            <div class="uc1">
+                <i class="fa-sharp fa-solid fa-search fa-2x"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            
+        </div>
+        <div class="hr1">
+            <span>dshusdock</span>
+            <i class="fa-regular fa-user fa-3x" @click="openUserDropdown($event)"></i>
+        </div>
+        <div x-show="showUserDropdown" 
+            x-transition 
+            @click.outside="showUserDropdown = false" 
+            class="header-dropdown"
+        >
+            <div class="dropdown-content" @click="showUserDropdown = false">
+                <div class="" @click="toggleColorMode()">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <a href="#">Color Mode</a>
+                </div>
+                <div class="">
+                    <a href="#">Link 2</a>
+                </div>
+                <div class="">
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+{{end}}

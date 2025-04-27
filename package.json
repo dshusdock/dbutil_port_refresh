@@ -1,0 +1,21 @@
+{
+    "name": "go_project",
+    "version": "1.0.0",
+    "description": "",
+    "main": "",
+    "scripts": {
+        "compile:sass": "sass ui/html/sass/main.scss ui/html/css/styles.css -w",
+        "build": "webpack build"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "webpack": "^5.94.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "dependencies": {
+        "alpinejs": "^3.14.3",
+        "prettier": "^3.3.3",
+        "sass": "^1.81.0"
+    }
+}

@@ -1,0 +1,82 @@
+{{define "auditvw"}}
+{{with.Tmplt.auditvw}}
+
+<div class="audit-menu" x-data="auditvw">
+    <div class="audit-menu__comp">
+        <div class="audit-menu__hdr">
+            <p class="">Audit Menu</p>
+        </div>
+        <div class="audit-menu__body"
+                hx-swap="innerHTML swap:.1s"
+                hx-target=".dbutilvw-body__cntr"
+                hx-trigger="click"
+                hx-vals='js:{
+                "src": event.target.dataset.srcId,
+                "view": "auditvw",
+                "data": event.target.checked}'
+                >            
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="">Select</div>
+                            {{if .MasterCheck}}
+                            <label class="switch">                               
+                                <input type="checkbox" id="" data-src-id="selectall_toggle" checked hx-post="/event/element/click">
+                                <span class="slider"></span>
+                            </label> 
+                            {{else}}
+                            <label class="switch">                               
+                                <input type="checkbox" id="" data-src-id="selectall_toggle" hx-post="/event/element/click">
+                                <span class="slider"></span>
+                            </label>
+                            {{end}}
+                            </th>
+                        <th>Issue</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody
+                    hx-swap="none"
+                    hx-trigger="click"
+                    hx-vals='js:{
+                    "src": event.target.id,
+                    "view": "auditvw",
+                    "data": event.target.checked,}'>
+                    {{range .Data}}
+                    
+                    <tr>
+                        {{if .Checked}}
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="{{.Issue}}" checked data-src-id="test" hx-post="/event/element/click">
+                                    <span class="slider"></span>
+                                </label>                            
+                            </td>
+                        {{else}}
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" id="{{.Issue}}" data-src-id="test" hx-post="/event/element/click">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        {{end}} 
+                        <td>{{.IssueName}}</td>
+                        <td>{{.IType}}</td>
+                    </tr>
+                    {{end}}
+                    
+                </tbody>
+            </table>
+        </div>                       
+    </div>
+</div>
+{{end}}
+
+
+{{if .Tmplt.auditvw.Modal}}
+<div id="modal_placeholder">
+    {{template "createauditvw" .}}
+</div>
+{{end}}
+{{end}}

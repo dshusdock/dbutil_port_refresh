@@ -1,0 +1,51 @@
+{{define "loginvw"}}
+{{with.Tmplt.basevw}}
+    <div class="loginvw">
+        <div class="loginvw__ca-btn">
+            <button class="loginvw__ca-btn__button"
+                data-src-id="create-account"
+                hx-post="/event/element/click"
+                hx-swap="outerHTML swap:.1s"
+                hx-target=".main-div"
+                hx-trigger="click"
+                hx-vals='js:{               
+                "src": event.target.dataset.srcId,
+                "view": "loginvw",
+                "data": "",}'>Create Account</button>
+        </div>
+        <div class="loginvw__header">
+            <h1 style="color:DeepPink;text-align:center;font-family:Arial, sans-serif;font-size:60px;text-shadow: 2px 2px white;">Unigy Triage Utility</h1>
+        </div>
+        <div class="loginvw__image">
+            <img src="html/images/ipc_logo_circle.gif" alt="IPC" class="center">
+        </div>
+        <div class="loginvw__form">
+            <form 
+                hx-swap="internalHTML swap:.1s"
+                hx-target=".main-div"
+                hx-trigger="submit"
+                hx-vals='js:{
+                "src": event.target.dataset.srcId,            
+                "view": "loginvw",
+                "data": "",}'>
+                <div class="loginvw__form-input">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="loginvw__form-input">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="loginvw__form-btn">
+                    <button data-src-id="login" class="loginvw__form__input__button" hx-post="/event/element/click">Login</button>
+                </div>
+
+            </form>
+            <a href="#" class="loginvw__form__forgot">Forgot Password?</a>
+            
+        </div>
+        <p>{{.DisplayMsg}}</p>
+        
+    </div>
+{{end}}
+{{end}}

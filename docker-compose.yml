@@ -1,0 +1,20 @@
+version: '3.8'
+services: 
+    main-server:
+        image: dshusdock/dbutil:v0.14
+        ports:
+            - "8442:8442"
+        volumes: 
+            - /mnt/allicatnasn1/allicat_inactive:/mnt/allicatnasn1/allicat_inactive
+    db:
+        image: mariadb:latest
+        environment:
+          MYSQL_ROOT_PASSWORD: my-secret-pw
+          MYSQL_DATABASE: udu
+        ports:
+            - "8306:3306"
+        volumes: 
+            - db-data:/var/lib/mysql
+volumes: 
+    db-data:
+        driver: local

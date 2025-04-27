@@ -1,0 +1,48 @@
+{{define "dbsourcevw"}}
+{{with.Tmplt.dbsourcevw}}
+<div class="dbsourcevw" x-data="dbsourcevw">
+    <div class="dbsourcevw__title">
+        <p>Database Source</p>
+    </div>
+    <form hx-swap="innerHTML swap:.1s"
+        hx-target="#dbmain"
+        hx-trigger="submit"
+        hx-vals='js:{
+            "src": event.target.dataset.srcId,
+            "view": "dbsourcevw",
+            "data": "",}'>
+        <div class="dbsourcevw__trgt">
+            <div class="server-select">
+                <label for="source_ip">Target Server:</label>
+                <input type="text" class="input_type1" name="targetserver" placeholder="Enter Server IP Address" value="{{.DBHost}}">
+                <button type="submit" class="button_type1" data-src-id="target-select" hx-post="/event/element/click"  >Select</button>
+            </div>
+        </div>
+        <div class="dbsourcevw__db">
+            <div class="db-select">
+                <label for="source_ip">Database:</label>
+                <select class="select_type1" name="selecteddb" data-src-id="db-select"
+                    hx-post="/event/element/change"
+                    hx-swap="innerHTML swap:.1s"
+                    hx-trigger="change"
+                    hx-target="#dbmain"
+                    hx-vals='js:{
+                    "src": event.target.dataset.srcId,
+                    "view": "dbsourcevw",
+                    "data": "",}'>
+                    <option value="" disabled selected>{{.SelectedDB}}</option>
+                    {{range .DBList}}
+                        <option value="{{.}}">{{.}}</option>
+                    {{end}}
+                </select>
+                <div class="select-arrow"></div>
+            </div>
+        </div>
+        <div class="dbsourcevw__cntrl">
+            <span id="db-avail-state">{{.DBConfirmStr}}</span>
+            <button type="button" class="button_type1"@click="onClose()">Close</button>
+        </div>
+    </form>
+</div>
+{{end}}
+{{end}}

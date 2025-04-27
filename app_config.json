@@ -1,0 +1,5 @@
+{
+    "host_ip": "10.207.232.201",
+    "app_port": 8500,
+    "log_level": "debug"
+}

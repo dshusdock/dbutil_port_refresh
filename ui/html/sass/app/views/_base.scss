@@ -1,0 +1,118 @@
+// RESET
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+// :root {
+//   --primary-color: #13505B; //#132431
+//   //--primary-color: #132431;
+//   --secondary-color: #0C7489; //#093f5b
+//   //--secondary-color: #093f5b
+//   --tertiary-color: #119DA4;
+//   --dark-color: #040404;
+//   --light-color: #D7D9CE;
+//   --background-pri-color: var(--dark-color);
+//   --font-light-color: white;
+//   --font-dark-color: black;
+//   --font-sec-color: var(--light-color);
+//   --font-color: var(--font-dark-color);
+//   --table_alt_color: var(--light-color);
+
+//   --audit_menu_bg_color: var(--primary-color);
+//   --audit_menu_color: var(--font-light-color);
+//   --audit_menu_hover_bg_color: var(--secondary-color);
+//   --audit_menu_hdr_bg_color: var(--primary-color);
+//   --audit_menu_hdr_color: var(--font-light-color);
+//   --audit_menu_ftr_bg_color: var(--primary-color);
+//   --audit_menu_ftr_color: var(--font-light-color);  
+//   --audit_menu_comp_bg_color: var(--primary-color);
+//   --audit_menu_comp_color: var(--font-light-color);
+//   --audit_menu_btn_bg_color: var(--primary-color);
+//   --audit_menu_btn_color: var(--font-light-color);
+//   --audit_menu_tbl_border_color: var(--secondary-color);
+//   --audit_menu_tbl_color: var(--font-light-color);
+
+
+// }
+
+:root {
+  --primary-color: #001532; 
+  --secondary-color: #8D909A;
+  --tertiary-color: #9B8C9C;
+  --dark-color: #040404;
+  --light-color: #fff;
+  --custom-color1: #A00160;
+  --custom-color2: #d1d7d9;
+  --custom-color3: #E1BB66;
+  --custom-color4: #4b2e90;
+  --custom-color5: #eaedf5;
+  --custom-color6: #5454a3;
+  --custom-color7: #d7cbd9;
+  --font-color: var(--font-dark-color);
+  --box-shadow1: 3px 5px 5px 0px #756771;
+  --background-type1: linear-gradient(#4b2e90 5%, #eb078f 100%);
+
+  --input-color: var(--dark-color);
+  --input-color-bg: var(--custom-color5);
+  --input-color-hover: var(--tertiary-color);
+  --input-color-focus: var(--custom-color2);
+  --input-color-border: #fff;
+  --button-color: #4b2e90;
+  --button-color-bg: #4b2e90;
+  --button-color-hover: #4b2e90;
+  --button-color-focus: #4b2e90;
+  --button-color-border: #4b2e90;
+  --select-color: var(--dark-color);
+  --select-color-bg: var(--custom-color5);
+  --select-color-hover: var(--tertiary-color);
+  --select-color-focus: var(--custom-color2);
+  --select-color-border: #4b2e90;
+
+  --table-cntr-hdr-color: var(--light-color);
+  --table-cntr-hdr-bg-color: var(--custom-color4);
+  --table-caption-color: var(--dark-color);
+  --table-caption-bg-color: var(--light-color);
+  --table-hdr-color: var(--light-color);
+  --table-hdr-bg-color: var(--custom-color6);
+  --table-data-color: var(--dark-color);
+  --table-data-bg-color: var(--custom-color7);
+  --table-data-border-color: var(--tertiary-color);
+
+
+}
+
+html {
+  // This defines what 1 rem is.
+  font-size: 62.5%;
+  min-height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--secondary-color);
+  height: 100%;
+  overflow: hidden;
+  margin: 0; 
+}
+
+p {
+  //font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  //height: 100%;
+
+  // & button {
+  //   margin: 1rem;
+  //   width: 10rem;
+  //   height: 3rem;
+  //   border-radius: 1rem;
+  // }
+}

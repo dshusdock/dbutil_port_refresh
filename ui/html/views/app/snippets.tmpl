@@ -1,0 +1,19 @@
+{{define "snippets"}}
+{{with.Tmplt.tablevw.Data}}
+<div class="page_select__container">
+    <ul hx-post="/event/element/click"
+        hx-swap="innerHTML swap:.1s"
+        hx-target=".activity_area"
+        hx-vals='js:{
+        "type": "page-select",
+        "label": event.target.innerHTML,
+        "view": "tablevw",
+        "data": "select",
+    }'>
+        {{range .PageAry}}
+        <li>{{.}}</li>
+        {{end}}
+    </ul>
+</div>
+{{end}}
+{{end}}

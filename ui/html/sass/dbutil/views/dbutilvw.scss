@@ -1,0 +1,14 @@
+.dbutilvw {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    //background-color: blue;
+    //opacity: 0.5;
+
+    &-body__cntr {
+        position: relative;
+        margin-left: 5rem;
+    }
+
+}

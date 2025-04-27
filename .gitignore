@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+tmp/main
+tmp/build-errors.log
+ui/html/css/styles.css
+dev_cert.crt
+dev_key.key
+.vscode/launch.json.orig
+ui/html/dist/main.js
+ui/html/css/styles.css.map
+udu_bkup_20250220.sql

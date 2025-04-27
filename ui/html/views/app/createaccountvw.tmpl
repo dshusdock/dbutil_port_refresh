@@ -1,0 +1,50 @@
+{{define "createaccountvw"}}
+{{with.Tmplt.basevw}}
+<div class="createacctvw">
+    <div class="createacctvw__header">
+        <h1 style="color:DeepPink;text-align:center;font-family:Arial, sans-serif;font-size:60px;text-shadow: 2px 2px white;">Create Account</h1>
+    </div>
+    <div class="createacctvw__image">
+        <img src="html/images/ipc_logo_circle.gif" alt="IPC" class="center">
+    </div>
+    <div class="createacctvw__form">
+        <form 
+            hx-swap="internalHTML swap:.1s"
+            hx-target=".main-div"
+            hx-trigger="submit"
+            hx-vals='js:{
+            "src": event.target.dataset.srcId,
+            "view": "createacctvw",
+            "data": "",}'>
+            {{range .Data}}
+            <div class="createacctvw__form-input">
+                <label for="{{.ForField}}">{{.Label}}</label>
+                <input style="{{.Style}}" type="{{.TypeField}}" id="{{.IdField}}" name="{{.NameField}}" hx-preserve required>
+            </div>
+            {{end}}
+            <div class="createacctvw__form-btn">
+                <button data-src-id="submit" class="createacctvw__form__input__button" hx-preserve hx-post="/event/element/click">Submit</button>
+            </div>
+
+        </form>
+        <a href="#" class="loginvw__form__forgot">Forgot Password?</a>        
+    </div>
+
+    {{if .DisplayResponse}}
+    <div class="createacctvw_response">
+        <h2>{{.DisplayMsg}}</h2>
+        <button 
+            data-src-id="ok"
+            hx-swap="internalHTML swap:.1s"
+            hx-target=".main-div"
+            hx-post="/event/element/click"
+            hx-trigger="click"
+            hx-vals='js:{
+            "src": event.target.dataset.srcId,
+            "view": "createacctvw",
+            "data": "",}'>OK</button>
+    </div>
+    {{end}}
+</div>
+{{end}}
+{{end}}

@@ -1,0 +1,13 @@
+{{define "main_vw"}}
+
+<div class="appstage">   
+    {{ if .Base.DBUtilApp}}
+        {{ template "dbutilvw" . }}
+    {{ end}}
+
+   
+   
+</div>
+<div id="indicator" class="ldr-indicator htmx-indicator"><span>Loading Data...</span></div>
+
+{{end}}

@@ -1,0 +1,72 @@
+.appsidenavvw {
+    position: fixed;
+    top: 6.5rem;
+    left: 0;
+    width: 25rem;
+    height: 100%;
+    //background-color: var(--secondary-color);
+    background: linear-gradient(#4b2e90 5%, #eb078f 100%);
+    z-index: 2000;
+    transition: transform 0.3s;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        font-size: 1.6rem;
+        width: 90%;
+
+        & div {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 12px;
+            padding: 0 0 0 1rem;
+            opacity: 0.8;
+
+            &:hover {
+                transition: .3s;
+                background-color: #9a9ba1;
+                border-radius: 12px;
+                opacity: 1;
+               
+            }
+        }
+
+        & a {
+            width: 100%;
+            color: #fafafa;
+            text-decoration: none;
+            padding: 1rem 0;
+            transition: color 0.3s;
+            margin-right: 1rem;
+            
+        }
+        
+        & i {
+            margin: 0 2rem 0 0;
+            color: #d4cbcb;
+            margin-right: 2rem;
+            cursor: pointer;
+
+        }
+    }
+
+    &.show {
+        transform: translateX(0);
+    }
+}
+
+.border_bottom-1x {
+    border-bottom: 1px solid #d4cbcb;
+    margin: 1rem 0 1rem 0;
+}
+
+.closeappsidenav {
+    transform: translateX(-25rem);
+}

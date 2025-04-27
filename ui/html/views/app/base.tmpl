@@ -1,0 +1,32 @@
+{{define "base"}}
+
+<!DOCTYPE html>
+<html id="html_tag" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unigy Triage Utility</title>
+  <link rel="icon" href="/html/images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/html/css/styles.css" />
+  <script src="https://unpkg.com/htmx.org@1.9.7"></script>
+ 
+  <script src="https://kit.fontawesome.com/11545ec011.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="main-div" x-data="test">
+    {{if .Base.LoggedIn}}
+      {{ template "layout" . }}
+    {{else if .Base.CreateAccount}}
+      {{ template "createaccountvw" . }}
+    {{else}}
+      {{ template "loginvw" . }}
+    {{end}}
+  </div> 
+  <script src="/html/dist/main.js"></script>
+</body>
+
+</html>
+
+{{ end }}
